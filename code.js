@@ -49,4 +49,5 @@ let game = () => {
   }
 };
 
+alert("Lablab let's play a game!\n💝 👊 ✋ ✌ 💖");
 game();
