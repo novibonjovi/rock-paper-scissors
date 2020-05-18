@@ -49,5 +49,8 @@ let game = () => {
   }
 };
 
-alert("Lablab let's play a game!\n💝 👊 ✋ ✌ 💖");
-setTimeout(game(), 2000);
+const buttonPlay = document.getElementById('button-play');
+
+buttonPlay.onclick = function () {
+  game();
+};
