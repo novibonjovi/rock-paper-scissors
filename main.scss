@@ -61,7 +61,7 @@ h1 {
   border-bottom: 5px solid hsl(260, 5%, 15%);
   border-left: 10px solid hsl(260, 5%, 15%);
 
-  background-color: hsl(40, 100%, 70%);
+  background-color: hsl(40, 80%, 70%);
 }
 
 #player {
@@ -72,7 +72,7 @@ h1 {
   border-bottom: 5px solid hsl(260, 5%, 15%);
   border-left: 10px solid hsl(260, 5%, 15%);
 
-  background-color: hsl(211, 85%, 50%);
+  background-color: hsl(211, 85%, 70%);
 
   display: flex;
 }
@@ -85,7 +85,7 @@ h1 {
   border-bottom: 5px solid hsl(260, 5%, 15%);
   border-left: 0px solid hsl(260, 5%, 15%);
 
-  background-color: hsl(211, 85%, 50%);
+  background-color: hsl(211, 85%, 70%);
 }
 
 #comp {
@@ -96,7 +96,7 @@ h1 {
   border-bottom: 5px solid hsl(260, 5%, 15%);
   border-left: 5px solid hsl(260, 5%, 15%);
 
-  background-color: hsl(340, 70%, 50%);
+  background-color: hsl(340, 70%, 70%);
 }
 
 #scoreC {
@@ -107,7 +107,7 @@ h1 {
   border-bottom: 5px solid hsl(260, 5%, 15%);
   border-left: 0px solid hsl(260, 5%, 15%);
 
-  background-color: hsl(340, 70%, 50%);
+  background-color: hsl(340, 70%, 70%);
 }
 
 #rock {
@@ -124,6 +124,15 @@ h1 {
     width: 100px;
     height: 100px;
     background-position: 5px 5px;
+  }
+}
+
+#rock:hover {
+  background-color: hsl(192, 100%, 50%);
+
+  .image {
+    transform: scale(1.5);
+    transition-duration: 0.3s;
   }
 }
 
@@ -144,6 +153,15 @@ h1 {
   }
 }
 
+#paper:hover {
+  background-color: hsl(11, 100%, 65%);
+
+  .image {
+    transform: scale(1.5);
+    transition-duration: 0.3s;
+  }
+}
+
 #scissors {
   grid-column: 5 / 7;
   grid-row: 5 / 6;
@@ -161,6 +179,15 @@ h1 {
   }
 }
 
+#scissors:hover {
+  background-color: hsl(235, 100%, 65%);
+
+  .image {
+    transform: scale(1.5);
+    transition-duration: 0.3s;
+  }
+}
+
 #results {
   grid-column: 1 / 7;
   grid-row: 3 / 4;
@@ -169,7 +196,7 @@ h1 {
   border-bottom: 5px solid hsl(260, 5%, 15%);
   border-left: 10px solid hsl(260, 5%, 15%);
 
-  background-color: hsl(70, 100%, 65%);
+  background-color: hsl(70, 80%, 65%);
 }
 
 #endResult {
@@ -180,5 +207,5 @@ h1 {
   border-bottom: 5px solid hsl(260, 5%, 15%);
   border-left: 10px solid hsl(260, 5%, 15%);
 
-  background-color: hsl(100, 100%, 75%);
+  background-color: hsl(100, 80%, 75%);
 }
