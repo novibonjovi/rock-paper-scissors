@@ -1,9 +1,29 @@
+let playerScore = 0;
+let computerScore = 0;
+
+const btnRock = document.getElementById('rock');
+const btnPaper = document.getElementById('paper');
+const btnScissors = document.getElementById('scissors');
+
+const results = document.querySelector('#results');
+const endResult = document.querySelector('#endResult');
+const scoreP = document.querySelector('#scoreP');
+const scoreC = document.querySelector('#scoreC');
+
 let computerPlay = () => {
   let choice = ['Rock', 'Paper', 'Scissors'];
   return choice[Math.floor(Math.random() * choice.length)];
 };
 
 let playRound = (playerSelection, computerSelection) => {
+  if (playerScore == 5 || computerScore == 5) {
+    playerScore = 0;
+    computerScore = 0;
+    scoreP.textContent = playerScore;
+    scoreC.textContent = computerScore;
+    endResult.textContent = 'First to 5 points wins!';
+  }
+
   if (
     (playerSelection.toLowerCase() === 'rock' &&
       computerSelection === 'Scissors') ||
@@ -12,9 +32,20 @@ let playRound = (playerSelection, computerSelection) => {
     (playerSelection.toLowerCase() === 'scissors' &&
       computerSelection === 'Paper')
   ) {
-    return `You Win! ${
+    playerScore++;
+    scoreP.textContent = playerScore;
+    scoreC.textContent = computerScore;
+    results.textContent = `You Win! ${
       playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()
-    } beats ${computerSelection}`;
+    } beats ${computerSelection}.`;
+
+    if (playerScore == 5) {
+      results.textContent = `You Win! ${
+        playerSelection[0].toUpperCase() +
+        playerSelection.slice(1).toLowerCase()
+      } beats ${computerSelection}.`;
+      endResult.textContent = 'You are the first to win 5 games! Winner!';
+    }
   } else if (
     (playerSelection.toLowerCase() === 'rock' &&
       computerSelection === 'Paper') ||
@@ -23,34 +54,27 @@ let playRound = (playerSelection, computerSelection) => {
     (playerSelection.toLowerCase() === 'scissors' &&
       computerSelection === 'Rock')
   ) {
-    return `You Lose! ${computerSelection} beats ${
+    computerScore++;
+    scoreP.textContent = playerScore;
+    scoreC.textContent = computerScore;
+    results.textContent = `You Lose! ${computerSelection} beats ${
       playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()
-    }`;
-  } else {
-    return "It's a Draw!";
-  }
-};
+    }.`;
 
-let game = () => {
-  let playerScore = 0;
-  let computerScore = 0;
-
-  for (i = 0; i < 5; i++) {
-    let playerSelection = prompt('Enter: Rock, Paper or Scissors', '');
-    let result = playRound(playerSelection, computerPlay());
-
-    if (result.indexOf('Win') > 0) {
-      playerScore++;
-    } else if (result.indexOf('Lose') > 0) {
-      computerScore++;
+    if (computerScore == 5) {
+      results.textContent = `You Lose! ${computerSelection} beats ${
+        playerSelection[0].toUpperCase() +
+        playerSelection.slice(1).toLowerCase()
+      }.`;
+      endResult.textContent = 'The computer won 5 games first. Try again!';
     }
-    console.log(result);
-    alert(`${result}\nYou: ${playerScore}, Comp: ${computerScore}`);
+  } else {
+    results.textContent = `It's a Draw!`;
   }
 };
 
-const buttonPlay = document.getElementById('button-play');
-
-buttonPlay.onclick = function () {
-  game();
-};
+btnRock.addEventListener('click', () => playRound('Rock', computerPlay()));
+btnPaper.addEventListener('click', () => playRound('Paper', computerPlay()));
+btnScissors.addEventListener('click', () =>
+  playRound('Scissors', computerPlay())
+);
